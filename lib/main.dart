@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_learn/change_notifier_provider/user_notifier_change.dart';
 import 'package:riverpod_learn/future_provider/future_user_model.dart';
+import 'package:riverpod_learn/future_provider/user_repository.dart';
 import 'package:riverpod_learn/state_notifier_provider/userModel.dart';
 import 'package:riverpod_learn/state_notifier_provider_two/user.dart';
 import 'package:http/http.dart' as http;
@@ -23,9 +24,21 @@ final userProviderTwo = StateNotifierProvider<UserNotifierOne, UserOne>(
 final userChangeNotifierProvider =
     ChangeNotifierProvider((ref) => UserNotifierChange());
 
+// 1. future provider
 final fetchUserProvider = FutureProvider((ref) {
   const url = "https://jsonplaceholder.typicode.com/users/1";
-  return http.get(Uri.parse(url)).then((value) => FutureUserModel.fromJson(value.body));
+  return http
+      .get(Uri.parse(url))
+      .then((value) => FutureUserModel.fromJson(value.body));
+});
+
+
+
+// 2. future provider
+final fetchUserRepository = FutureProvider((ref) {
+//  return UserRepository().fetchUserData();
+  final userRepository = ref.watch(userRepositoryProvider);
+  return userRepository.fetchUserData();
 });
 
 void main() {

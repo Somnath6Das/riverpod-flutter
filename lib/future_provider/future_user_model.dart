@@ -54,3 +54,5 @@ class FutureUserModel {
   @override
   int get hashCode => name.hashCode ^ email.hashCode;
 }
+
+
