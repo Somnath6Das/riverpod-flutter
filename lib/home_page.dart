@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_learn/consumer_widget.dart';
+import 'package:riverpod_learn/consumer_widget/consumer_widget.dart';
 import 'package:riverpod_learn/state_notifier_provider/state_notifier_provider.dart';
 import 'package:riverpod_learn/state_notifier_provider_two/state_notifier_provider_two.dart';
 import 'package:riverpod_learn/widget_ref/widget_ref_two.dart';

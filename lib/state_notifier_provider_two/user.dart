@@ -15,4 +15,7 @@ class UserNotifierOne extends StateNotifier<UserOne> {
   void updateName(String n) {
     state = UserOne(name: n, age: state.age);
   }
+  void updateAge(int a) {
+    state = UserOne(name: state.name, age: a);
+  }
 }

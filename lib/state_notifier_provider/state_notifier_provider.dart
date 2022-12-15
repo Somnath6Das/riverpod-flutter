@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_learn/main.dart';
-import 'package:riverpod_learn/state_notifier_provider/userModel.dart';
+
 
 class StateNotifierProvider extends ConsumerWidget {
   const StateNotifierProvider({super.key});
@@ -9,24 +9,32 @@ class StateNotifierProvider extends ConsumerWidget {
   void onSubmitName(WidgetRef ref, String value) {
     ref.read(userProvider.notifier).updateName(value);
   }
+
   void onSubmitAge(WidgetRef ref, int value) {
     ref.read(userProvider.notifier).updateAge(value);
   }
 
+  
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider);
+    // when the user value changes select method will rerun.
+    final userSelect = ref.watch(userProvider.select((value) => value.age));
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text(user.name),
+        //? Both user and userSelect
+        title:  Text("${user.name}  $userSelect"),
         backgroundColor: Colors.amber.shade800,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          //! user - provider
+         
           Center(
             child: TextField(
               onSubmitted: ((value) => onSubmitName(ref, value)),
@@ -39,6 +47,9 @@ class StateNotifierProvider extends ConsumerWidget {
               keyboardType: TextInputType.number,
             ),
           ),
+          //? userSelect - provider 
+          Center(child: Text(userSelect.toString())),
+
         ],
       ),
     );
