@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_learn/change_notifier_provider/user_notifier_change.dart';
+import 'package:riverpod_learn/future_provider/future_user_model.dart';
 import 'package:riverpod_learn/state_notifier_provider/userModel.dart';
 import 'package:riverpod_learn/state_notifier_provider_two/user.dart';
-
+import 'package:http/http.dart' as http;
 import 'home_page.dart';
 
 final nameProvider = StateProvider<String>((ref) => "Somnath");
@@ -18,13 +19,14 @@ final userProvider = StateNotifierProvider<UserNotifier, User>(
 final userProviderTwo = StateNotifierProvider<UserNotifierOne, UserOne>(
     (ref) => UserNotifierOne(const UserOne(name: "", age: 35)));
 
-
-
 // This is the only mutable provider that is ChangeNotifierProvider.
 final userChangeNotifierProvider =
     ChangeNotifierProvider((ref) => UserNotifierChange());
 
-
+final fetchUserProvider = FutureProvider((ref) {
+  const url = "https://jsonplaceholder.typicode.com/users/1";
+  return http.get(Uri.parse(url)).then((value) => FutureUserModel.fromJson(value.body));
+});
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -45,3 +47,5 @@ class MyApp extends StatelessWidget {
 // consumer widget
 // state provider
 // state notifier and state notifier provider
+// change notifier provider
+// Future provider

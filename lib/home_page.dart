@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_learn/change_notifier_provider/change_notifier_provider.dart';
 import 'package:riverpod_learn/consumer_widget/consumer_widget.dart';
+import 'package:riverpod_learn/future_provider/front_page.dart';
 import 'package:riverpod_learn/state_notifier_provider/state_notifier_provider.dart';
 import 'package:riverpod_learn/state_notifier_provider_two/state_notifier_provider_two.dart';
 import 'package:riverpod_learn/widget_ref/widget_ref_two.dart';
@@ -102,6 +103,21 @@ class HomePage extends StatelessWidget {
                           )));
             },
             child: const Text("Change Notifier Provider"),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+        MaterialButton(
+            padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+            color: Colors.amber.shade100,
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const FrontPage(
+                          )));
+            },
+            child: const Text("Future Provider"),
           ),
           const SizedBox(
             height: 10,
