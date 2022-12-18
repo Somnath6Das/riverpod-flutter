@@ -72,4 +72,9 @@ class UserNotifier extends StateNotifier<User> {
   void updateAge(int a) {
     state = state.copyWith(age: a);
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 }

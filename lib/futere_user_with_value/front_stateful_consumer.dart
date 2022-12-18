@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_learn/future_provider/user_repository.dart';
 import 'package:riverpod_learn/main.dart';
 
-class FrontUserRepository extends ConsumerWidget {
-  const FrontUserRepository({super.key});
+class FrontStatefulConsumer extends ConsumerStatefulWidget {
+  const FrontStatefulConsumer({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // ref.watch(fetchUserProvider).whenData((value) => Text(value.name));
-    
-    return ref.watch(fetchUserRepository).when(
+  ConsumerState<FrontStatefulConsumer> createState() =>
+      _FrontStatefulConsumerState();
+}
+
+class _FrontStatefulConsumerState extends ConsumerState<FrontStatefulConsumer> {
+  String userNo = "1";
+
+  @override
+  Widget build(BuildContext context) {
+    return ref.watch(fetchUserWithValue(userNo)).when(
       data: (data) {
         return Scaffold(
           backgroundColor: Colors.white,
@@ -23,7 +28,14 @@ class FrontUserRepository extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(child: Text(data.email)),
-              
+              Center(
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  onSubmitted: ((value) => setState(() {
+                        userNo = value;
+                      })),
+                ),
+              ),
             ],
           ),
         );
@@ -33,7 +45,7 @@ class FrontUserRepository extends ConsumerWidget {
       }),
       loading: () {
         return const Scaffold(
-          body:  Center(
+          body: Center(
             child: CircularProgressIndicator(),
           ),
         );

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_learn/change_notifier_provider/change_notifier_provider.dart';
 import 'package:riverpod_learn/consumer_widget/consumer_widget.dart';
+import 'package:riverpod_learn/futere_user_with_value/front_stateful_consumer.dart';
 import 'package:riverpod_learn/future_provider/front_page.dart';
 import 'package:riverpod_learn/future_provider/front_user_repository.dart';
 import 'package:riverpod_learn/state_notifier_provider/state_notifier_provider.dart';
 import 'package:riverpod_learn/state_notifier_provider_two/state_notifier_provider_two.dart';
+import 'package:riverpod_learn/stream_provider/front_stream_provider.dart';
 import 'package:riverpod_learn/widget_ref/widget_ref_two.dart';
 import 'package:riverpod_learn/widget_ref/widget_ref_widget.dart';
 
@@ -28,8 +30,7 @@ class HomePage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ConsumerWidget(
-                          )));
+                      builder: (context) => const ConsumerWidget()));
             },
             child: const Text("Consumer Widget"),
           ),
@@ -43,8 +44,7 @@ class HomePage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const WidgetRefWidget(
-                          )));
+                      builder: (context) => const WidgetRefWidget()));
             },
             child: const Text("Widget Ref"),
           ),
@@ -55,85 +55,103 @@ class HomePage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const WidgetRefTwo(
-                          )));
+                      builder: (context) => const WidgetRefTwo()));
             },
             child: const Text("widget Ref Two"),
           ),
           const SizedBox(
             height: 10,
           ),
-        MaterialButton(
+          MaterialButton(
             padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
             color: Colors.amber.shade100,
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const StateNotifierProvider(
-                          )));
+                      builder: (context) => const StateNotifierProvider()));
             },
             child: const Text("State Notifier Provider"),
           ),
           const SizedBox(
             height: 10,
           ),
-        MaterialButton(
+          MaterialButton(
             padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
             color: Colors.amber.shade100,
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const StateNotifierProviderTwo(
-                          )));
+                      builder: (context) => const StateNotifierProviderTwo()));
             },
             child: const Text("State Notifier Provider Two"),
           ),
           const SizedBox(
             height: 10,
           ),
-        MaterialButton(
+          MaterialButton(
             padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
             color: Colors.amber.shade100,
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ChangeNotifierProvider(
-                          )));
+                      builder: (context) => const ChangeNotifierProvider()));
             },
             child: const Text("Change Notifier Provider"),
           ),
           const SizedBox(
             height: 10,
           ),
-        MaterialButton(
+          MaterialButton(
             padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
             color: Colors.amber.shade100,
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const FrontPage(
-                          )));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const FrontPage()));
             },
             child: const Text("Future Provider"),
           ),
           const SizedBox(
             height: 10,
           ),
-        MaterialButton(
+          MaterialButton(
             padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
             color: Colors.amber.shade100,
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const FrontUserRepository(
-                          )));
+                      builder: (context) => const FrontUserRepository()));
             },
             child: const Text("Future Provider User Repository class"),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          MaterialButton(
+            padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+            color: Colors.amber.shade100,
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const FrontStatefulConsumer()));
+            },
+            child: const Text("Future Provider With Value"),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          MaterialButton(
+            padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+            color: Colors.amber.shade100,
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const FrontStreamProvider()));
+            },
+            child: const Text("Stream Provider"),
           ),
           const SizedBox(
             height: 10,
